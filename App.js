@@ -1,21 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from "react";
+import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { AppLoading } from "expo";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import LandingpageScreen from "./screens/LandingpageScreen";
+import OnboardingScreen from "./screens/OnboardingScreen";
+import Onboarding from "./screens/Onboarding";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const Stack = createStackNavigator();
+
+const loadFonts = () =>
+  Font.loadAsync({
+    "montserrat-regular": require("./assets/fonts/Montserrat/Montserrat-Regular.ttf"),
+    "montserrat-bold": require("./assets/fonts/Montserrat/Montserrat-Bold.ttf"),
+    "montserrat-semibold": require("./assets/fonts/Montserrat/Montserrat-SemiBold.ttf"),
+  });
+
+const App = () => {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  if (fontsLoaded) {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Onboarding">
+          <Stack.Screen
+            name="Landingpage"
+            component={LandingpageScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return (
+      <AppLoading
+        startAsync={loadFonts}
+        onFinish={() => setFontsLoaded(true)}
+      />
+    );
+  }
+};
+
+export default App;
