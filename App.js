@@ -1,12 +1,12 @@
+import 'react-native-gesture-handler';
 import React, { useState } from "react";
 import * as Font from "expo-font";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AppLoading } from "expo";
 
-import LandingpageScreen from "./screens/LandingpageScreen";
+// import LandingScreen from "./screens/LandingScreen";
 import OnboardingScreen from "./screens/OnboardingScreen";
-import Onboarding from "./screens/Onboarding";
 
 const Stack = createStackNavigator();
 
@@ -23,17 +23,22 @@ const App = () => {
   if (fontsLoaded) {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Onboarding">
+        <Stack.Navigator initialRouteName="OnboardingScreen">
+          {/* <Stack.Screen
+            name="LandingScreen"
+            component={LandingScreen}
+            options={{ headerShown: false }}
+          /> */}
           <Stack.Screen
-            name="Landingpage"
-            component={LandingpageScreen}
+            name="OnboardingScreen"
+            component={OnboardingScreen}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name="Onboarding"
-            component={Onboarding}
+          {/* <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
             options={{ headerShown: false }}
-          />
+          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     );
