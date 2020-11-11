@@ -14,10 +14,19 @@ const OnboardingScreen = () => {
       // console.log(index)
   };
 
+  // const changelinks = () => {
+    
+  // }
+
+  // {indexnumber == 2 ? (
+  //   changelinks()
+  //  ) : (
+  //   <Text>Hello</Text>
+  // )}
   return (
     <View style={styles.container}>
       <View style={styles.onboardingview}>
-        <Swiper onIndexChanged={(index) => checkIndex(index)}>
+        <Swiper>
           <View style={styles.content}>
             <Text style={styles.title}>Prepare for your future</Text>
             <Text style={styles.subtitle}>
@@ -48,17 +57,14 @@ const OnboardingScreen = () => {
               style={{ marginTop: 20 }}
               source={require("../assets/onboardingImages/onboarding_3.png")}
             />
-          </View>
-        </Swiper>
-        {indexnumber == 2 ? (
-          <View style={styles.skipBtnView}>
-            <TouchableOpacity style={styles.skipBtnContainer}>
+            <View style={styles.skipBtnView}>
+            <TouchableOpacity style={styles.skipBtnContainer} onPress={() => console.log('pressed')}>
               <Text style={styles.skipBtn}>Skip</Text>
             </TouchableOpacity>
           </View>
-         ) : (
-          <Text>Hello</Text>
-        )}
+          </View>
+        </Swiper>
+        
       </View>
     </View>
   );
@@ -94,8 +100,8 @@ const styles = StyleSheet.create({
   skipBtnView: {
     flex: 1, 
     position: "absolute", 
-    bottom: "15%", 
-    right: "15%"
+    bottom: "-68%", 
+    right: "8%"
   },
   skipBtn: {
     color: "#ffffff",
