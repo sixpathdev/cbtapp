@@ -6,7 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { AppLoading } from "expo";
 
 // import LandingScreen from "./screens/LandingScreen";
-import OnboardingScreen from "./screens/OnboardingScreen";
+// import OnboardingScreen from "./screens/OnboardingScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const Stack = createStackNavigator();
 
@@ -23,22 +24,22 @@ const App = () => {
   if (fontsLoaded) {
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="OnboardingScreen">
+        <Stack.Navigator initialRouteName="LoginScreen">
           {/* <Stack.Screen
             name="LandingScreen"
             component={LandingScreen}
             options={{ headerShown: false }}
           /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="OnboardingScreen"
             component={OnboardingScreen}
             options={{ headerShown: false }}
-          />
-          {/* <Stack.Screen
+          /> */}
+          <Stack.Screen
             name="LoginScreen"
             component={LoginScreen}
             options={{ headerShown: false }}
-          /> */}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
